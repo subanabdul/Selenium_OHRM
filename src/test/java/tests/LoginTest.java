@@ -25,8 +25,8 @@ public class LoginTest extends BaseTest {
     public void invalidLoginTest() {
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterUsername("WrongUser");
-        loginPage.enterPassword("WrongPass");
+        loginPage.enterUsername("WrongUsername");
+        loginPage.enterPassword("WrongPassword");
         loginPage.clickLogin();
 
         String error = loginPage.getErrorMessage();
