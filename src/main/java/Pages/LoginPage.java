@@ -6,33 +6,27 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage {
     private WebDriver driver;
 
-    // locators
-    private By usernameField = By.name("username");
-    private By passwordField = By.name("password");
-    private By loginButton = By.xpath("//button[@type='submit']");
-
-    private By errorMessage = By.cssSelector(".oxd-alert-content-text");  // For error messages
+    public By usernameInput = By.name("username");
+    public By passwordInput = By.name("password");
+    public By loginButton = By.xpath("//button[@type='submit']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    // actions
+    public void goToLoginPage() {
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    }
+
     public void enterUsername(String username) {
-        driver.findElement(usernameField).clear();
-        driver.findElement(usernameField).sendKeys(username);
+        driver.findElement(usernameInput).sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        driver.findElement(passwordField).clear();
-        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(passwordInput).sendKeys(password);
     }
 
-    public void clickLogin() {
+    public void clickLoginButton() {
         driver.findElement(loginButton).click();
-    }
-
-    public String getErrorMessage() {
-        return driver.findElement(errorMessage).getText();
     }
 }
